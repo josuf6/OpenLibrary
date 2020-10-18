@@ -1,25 +1,30 @@
 package ehu.isad;
 
 public class Book {
-    String isbn;
-    String title;
+    String comboIsbn;
+    String comboTitulua;
 
-    String info_url;
-    String bib_key;
-    String preview_url;
     String thumbnail_url;
     Details details;
 
-    public Book(String isbn, String title) {
-        this.isbn = isbn;
-        this.title = title;
+    public Book(String pComboIsbn, String pComboTitulua) {
+        comboIsbn = pComboIsbn;
+        comboTitulua = pComboTitulua;
     }
 
-    public String getTitle() {
-        return this.title;
+    public String getComboTitulua() {
+        return comboTitulua;
     }
 
-    public String getIsbn() {
-        return this.isbn;
+    public String getComboIsbn() {
+        return comboIsbn;
+    }
+
+    public String getThumbnail_url() {
+        return thumbnail_url;
+    }
+
+    public Details getDetails() {
+        return details;
     }
 }

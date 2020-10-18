@@ -7,8 +7,10 @@ import ehu.isad.controllers.LiburuKud;
 import ehu.isad.controllers.XehetasunakKud;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,10 +33,16 @@ public class Liburuak extends Application {
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         stage.setResizable(false);
-        pantailakKargatu();
-
+        this.liburuakErakutsi();
         stage.setTitle("OpenLibrary");
-        stage.setScene(new Scene(liburuUI, 600, 400));
+    }
+
+    public void liburuakErakutsi() throws Exception {
+        this.pantailakKargatu();
+        stage.setScene(new Scene(liburuUI, 380, 130));
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - 380) / 2);
+        stage.setY((primScreenBounds.getHeight() - 180) / 2);
         stage.show();
     }
 
@@ -51,8 +59,11 @@ public class Liburuak extends Application {
     }
 
     public void xehetasunakErakutsi(String pIsbn) {
+        stage.setScene(new Scene(xehetasunakUI, 600, 450));
         xehetasunakKud.infoKudeatu(pIsbn);
-        stage.setScene(new Scene(xehetasunakUI));
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - 600) / 2);
+        stage.setY((primScreenBounds.getHeight() - 400) / 2);
         stage.show();
     }
 }

@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
 
 import java.net.URL;
@@ -20,7 +21,7 @@ public class LiburuKud implements Initializable {
     private Liburuak mainApp;
 
     @FXML
-    private Label txtHautatu;
+    private Label lblHautatu;
 
     @FXML
     private ComboBox<Book> comboLiburuak;
@@ -29,18 +30,24 @@ public class LiburuKud implements Initializable {
     private Button btnIkusi;
 
     public void setMainApp(Liburuak main) {
-        this.mainApp = main;
+        mainApp = main;
     }
 
     @FXML
     void onClick(ActionEvent event) {
-        mainApp.xehetasunakErakutsi(comboLiburuak.getValue().getIsbn());
+        btnIkusi.setDisable(true);
+        mainApp.xehetasunakErakutsi(comboLiburuak.getValue().getComboIsbn());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.liburuakSartu();
         this.comboTestuaEgokitu();
+        comboLiburuak.setOnAction(event -> {
+            if (btnIkusi.isDisabled()) {
+                btnIkusi.setDisable(false);
+            }
+        });
     }
 
     private void liburuakSartu() {
@@ -59,9 +66,8 @@ public class LiburuKud implements Initializable {
         comboLiburuak.setConverter(new StringConverter<>() {
             @Override
             public String toString(Book liburu) {
-                if (liburu == null)
-                    return "";
-                return liburu.getTitle();
+                if (liburu == null) return "";
+                else return liburu.getComboTitulua();
             }
 
             @Override

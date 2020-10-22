@@ -1,5 +1,5 @@
 # OpenLibrary
-JavaFX erabiliz OpenLibrary-ren API-a aztertzeko ISAD irakasgairako egindako ariketa
+JavaFX erabiliz OpenLibrary-ren API-a aztertzeko ISAD irakasgairako egindako ariketa.
 
 IntelliJ IDEA (Ultimate Edition) software-a erabiliz kodetu izan da guztia (Java lengoaiaz), eta Gradle tresna erabili izan da proiektua sortu, programatu eta probatzeko.
 Gomentatzen da Gradle erabiliz exekutatzea programa, honen funtzionalitate guztiak modu egokian egikaritu daitezen.
